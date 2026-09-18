@@ -1,0 +1,15 @@
+{
+  "name": "fischer-promotion-management",
+  "version": "1.0.0",
+  "description": "fischer Promotion Management Portal",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "fischer",
+    "promotion-management"
+  ],
+  "author": "albinjoy144",
+  "license": "ISC"
+}
