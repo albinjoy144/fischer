@@ -2769,38 +2769,69 @@ class AppController {
         </div>
       </div>
 
-      <!-- KPI Summary Cards -->
-      <div class="metrics-grid">
-        <div class="stat-card" style="--stat-accent: #E30613;">
-          <div class="stat-icon-wrapper"><i class="fa-solid fa-user-tie"></i></div>
-          <div class="stat-info">
-            <div class="stat-label">Total Heads</div>
-            <div class="stat-value">${heads.length}</div>
-            <div class="stat-trend neutral">Across all zones</div>
+      <!-- KPI Summary Cards (Dashboard Card Design) -->
+      <div class="metrics-row-6">
+        <!-- Card 1: Total Heads with Wave Graphic -->
+        <div class="ref-stat-card">
+          <div class="ref-card-header">
+            <div class="ref-card-icon red"><i class="fa-solid fa-user-tie"></i></div>
+            <div class="ref-card-title-box">
+              <div class="ref-card-label">Total Heads</div>
+              <div class="ref-card-value">${heads.length}</div>
+            </div>
+          </div>
+          <div class="ref-card-bottom">
+            <div class="ref-trend-text up"><i class="fa-solid fa-globe"></i> Across all zones</div>
+          </div>
+          <svg class="ref-wave-bg" viewBox="0 0 500 150" preserveAspectRatio="none">
+            <path d="M0,80 C150,140 350,20 500,90 L500,150 L0,150 Z" fill="#E30613"></path>
+          </svg>
+        </div>
+
+        <!-- Card 2: Total Supervisors with Purple Sparkline -->
+        <div class="ref-stat-card">
+          <div class="ref-card-header">
+            <div class="ref-card-icon purple"><i class="fa-solid fa-users"></i></div>
+            <div class="ref-card-title-box">
+              <div class="ref-card-label">Total Supervisors</div>
+              <div class="ref-card-value">${window.store.supervisors.length}</div>
+            </div>
+          </div>
+          <div class="ref-card-bottom">
+            <div class="ref-trend-text purple"><i class="fa-solid fa-users"></i> Field leaders</div>
+            <svg class="ref-sparkline-svg" viewBox="0 0 60 24">
+              <path d="M0,18 Q15,4 30,12 T60,6" fill="none" stroke="#7C3AED" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
           </div>
         </div>
-        <div class="stat-card" style="--stat-accent: #2563EB;">
-          <div class="stat-icon-wrapper"><i class="fa-solid fa-users"></i></div>
-          <div class="stat-info">
-            <div class="stat-label">Total Supervisors</div>
-            <div class="stat-value">${window.store.supervisors.length}</div>
-            <div class="stat-trend neutral">Field leaders</div>
+
+        <!-- Card 3: Total Sales with Progress Track -->
+        <div class="ref-stat-card">
+          <div class="ref-card-header">
+            <div class="ref-card-icon green"><i class="fa-solid fa-sack-dollar"></i></div>
+            <div class="ref-card-title-box">
+              <div class="ref-card-label">Total Sales (${window.store.currency})</div>
+              <div class="ref-card-value">${window.store.formatMoney(totalSales).replace(window.store.currency + ' ', '')}</div>
+            </div>
+          </div>
+          <div class="ref-card-bottom" style="margin-top: 14px;">
+            <div class="ref-progress-track">
+              <div class="ref-progress-fill green" style="width: 82%;"></div>
+            </div>
           </div>
         </div>
-        <div class="stat-card" style="--stat-accent: #10B981;">
-          <div class="stat-icon-wrapper"><i class="fa-solid fa-sack-dollar"></i></div>
-          <div class="stat-info">
-            <div class="stat-label">Total Sales</div>
-            <div class="stat-value">${window.store.formatMoney(totalSales)}</div>
-            <div class="stat-trend up">+18% vs last month</div>
+
+        <!-- Card 4: Total Event Spend with Orange Progress Track -->
+        <div class="ref-stat-card">
+          <div class="ref-card-header">
+            <div class="ref-card-icon orange"><i class="fa-solid fa-bullhorn"></i></div>
+            <div class="ref-card-title-box">
+              <div class="ref-card-label">Total Event Spend (${window.store.currency})</div>
+              <div class="ref-card-value">${window.store.formatMoney(totalSpend).replace(window.store.currency + ' ', '')}</div>
+            </div>
           </div>
-        </div>
-        <div class="stat-card" style="--stat-accent: #F59E0B;">
-          <div class="stat-icon-wrapper"><i class="fa-solid fa-bullhorn"></i></div>
-          <div class="stat-info">
-            <div class="stat-label">Total Event Spend</div>
-            <div class="stat-value">${window.store.formatMoney(totalSpend)}</div>
-            <div class="stat-trend neutral">Active budget</div>
+          <div class="ref-card-bottom">
+            <div class="ref-trend-text orange"><i class="fa-solid fa-chart-line"></i> Active budget</div>
           </div>
         </div>
       </div>
@@ -3408,30 +3439,59 @@ class AppController {
         </div>
       </div>
 
-      <!-- Highlights Banner -->
-      <div class="metrics-grid">
-        <div class="stat-card" style="--stat-accent: #E30613;">
-          <div class="stat-icon-wrapper"><i class="fa-solid fa-hand-holding-dollar"></i></div>
-          <div class="stat-info">
-            <div class="stat-label">Total Promo Investment</div>
-            <div class="stat-value">${window.store.formatMoney(totalSpend)}</div>
-            <div class="stat-trend neutral">${spendPercentage}% of total revenue</div>
+      <!-- Highlights Banner (Dashboard Card Design) -->
+      <div class="metrics-row-6" style="grid-template-columns: repeat(3, 1fr);">
+        <!-- Card 1: Total Promo Investment (AED) with Wave Graphic -->
+        <div class="ref-stat-card">
+          <div class="ref-card-header">
+            <div class="ref-card-icon red"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+            <div class="ref-card-title-box">
+              <div class="ref-card-label">Total Promo Investment (${window.store.currency})</div>
+              <div class="ref-card-value">${window.store.formatMoney(totalSpend).replace(window.store.currency + ' ', '')}</div>
+            </div>
+          </div>
+          <div class="ref-card-bottom">
+            <div class="ref-trend-text" style="color: #64748B;"><i class="fa-solid fa-chart-pie" style="color: #E30613;"></i> ${spendPercentage}% of total revenue</div>
+          </div>
+          <svg class="ref-wave-bg" viewBox="0 0 500 150" preserveAspectRatio="none">
+            <path d="M0,80 C150,140 350,20 500,90 L500,150 L0,150 Z" fill="#E30613"></path>
+          </svg>
+        </div>
+
+        <!-- Card 2: Sales Revenue Output (AED) with Progress Track -->
+        <div class="ref-stat-card">
+          <div class="ref-card-header">
+            <div class="ref-card-icon green"><i class="fa-solid fa-arrow-trend-up"></i></div>
+            <div class="ref-card-title-box">
+              <div class="ref-card-label">Sales Revenue Output (${window.store.currency})</div>
+              <div class="ref-card-value">${window.store.formatMoney(totalSales).replace(window.store.currency + ' ', '')}</div>
+            </div>
+          </div>
+          <div class="ref-card-bottom" style="flex-direction: column; align-items: flex-start; gap: 6px;">
+            <div style="display: flex; justify-content: space-between; width: 100%; font-size: 0.72rem; font-weight: 700; color: #10B981;">
+              <span><i class="fa-solid fa-bolt"></i> Strong Conversion</span>
+              <span>100%</span>
+            </div>
+            <div class="ref-progress-track">
+              <div class="ref-progress-fill green" style="width: 100%;"></div>
+            </div>
           </div>
         </div>
-        <div class="stat-card" style="--stat-accent: #16A34A;">
-          <div class="stat-icon-wrapper"><i class="fa-solid fa-arrow-trend-up"></i></div>
-          <div class="stat-info">
-            <div class="stat-label">Sales Revenue Output</div>
-            <div class="stat-value">${window.store.formatMoney(totalSales)}</div>
-            <div class="stat-trend up"><i class="fa-solid fa-bolt"></i> Strong conversion</div>
+
+        <!-- Card 3: Overall Promotion ROI with Purple Sparkline -->
+        <div class="ref-stat-card">
+          <div class="ref-card-header">
+            <div class="ref-card-icon purple"><i class="fa-solid fa-calculator"></i></div>
+            <div class="ref-card-title-box">
+              <div class="ref-card-label">Overall Promotion ROI</div>
+              <div class="ref-card-value">${overallROI}x</div>
+            </div>
           </div>
-        </div>
-        <div class="stat-card" style="--stat-accent: #2563EB;">
-          <div class="stat-icon-wrapper"><i class="fa-solid fa-calculator"></i></div>
-          <div class="stat-info">
-            <div class="stat-label">Overall Promotion ROI</div>
-            <div class="stat-value">${overallROI}x</div>
-            <div class="stat-trend up">Every 1 ${window.store.currency} spent yielded ${overallROI} ${window.store.currency} in sales</div>
+          <div class="ref-card-bottom">
+            <div class="ref-trend-text purple"><i class="fa-solid fa-arrow-trend-up"></i> 1 : ${overallROI} Multiplier</div>
+            <svg class="ref-sparkline-svg" viewBox="0 0 60 24">
+              <path d="M0,18 Q15,4 30,12 T60,6" fill="none" stroke="#7C3AED" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
           </div>
         </div>
       </div>
