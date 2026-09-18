@@ -18,7 +18,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="stylesheet" href="css/style.css?v=7">
 
   <!-- Immediate Session Auth State Detection -->
   <script>
@@ -279,6 +279,12 @@
     <div class="app-body">
       <!-- Sidebar Navigation -->
       <aside class="sidebar">
+        <div class="sidebar-header-mobile">
+          <img src="assets/fischer-logo-white.svg" alt="fischer" class="sidebar-logo-img" />
+          <button type="button" class="sidebar-close-btn" onclick="app.closeMobileSidebar()" aria-label="Close menu">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
         <nav class="sidebar-nav">
           <!-- 1. Dashboard -->
           <div class="nav-item active" data-nav="dashboard">

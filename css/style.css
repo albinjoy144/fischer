@@ -132,6 +132,10 @@ html.is-authenticated #app-container {
   transition: transform var(--transition-normal), left var(--transition-normal);
 }
 
+.sidebar-header-mobile {
+  display: none;
+}
+
 .sidebar-close-btn {
   display: none;
   background: none;
@@ -1972,19 +1976,53 @@ textarea.form-control {
   .sidebar {
     position: fixed;
     top: 0;
-    left: -280px;
+    left: -290px;
     bottom: 0;
     width: 275px;
     height: 100vh;
-    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.3);
+    z-index: 1050; /* CRITICAL: Higher than .sidebar-backdrop (1040) so backdrop blurs the content behind the sidebar, NOT the sidebar itself */
+    box-shadow: 10px 0 35px rgba(0, 0, 0, 0.5);
+    background: #111827;
   }
 
   .sidebar.open {
     left: 0;
   }
 
-  .sidebar-close-btn {
+  .sidebar-header-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: #0B0F19;
+    flex-shrink: 0;
+  }
+
+  .sidebar-logo-img {
+    height: 24px;
+    width: auto;
     display: block;
+  }
+
+  .sidebar-close-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: #94A3B8;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .sidebar-close-btn:hover {
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.18);
   }
 
   .btn-sidebar-toggle {
