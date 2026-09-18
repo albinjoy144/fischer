@@ -1849,7 +1849,7 @@ class AppController {
 
     modalTitle.textContent = `${d.name} - Branch Outlets (${(d.branches || []).length})`;
     modalBody.innerHTML = `
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div class="branches-grid">
         ${(d.branches || []).map(b => `
           <div class="card" style="margin-bottom: 0;">
             ${b.photo ? `<img src="${b.photo}" style="width: 100%; height: 130px; object-fit: cover;" />` : ''}
@@ -3440,7 +3440,7 @@ class AppController {
       </div>
 
       <!-- Highlights Banner (Dashboard Card Design) -->
-      <div class="metrics-row-6" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="metrics-row-3">
         <!-- Card 1: Total Promo Investment (AED) with Wave Graphic -->
         <div class="ref-stat-card">
           <div class="ref-card-header">
