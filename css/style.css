@@ -2015,9 +2015,77 @@ textarea.form-control {
   }
 
   .top-header {
-    height: 60px;
+    height: 56px;
     padding: 0 12px;
+    gap: 10px;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .header-left {
+    gap: 10px;
+    min-width: 0;
+    flex-shrink: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .header-brand-wrap {
     gap: 8px;
+    min-width: 0;
+    align-items: center;
+    display: flex;
+  }
+
+  .header-fischer-logo {
+    height: 26px;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .header-brand-sep {
+    display: none;
+  }
+
+  .header-portal-title {
+    display: none;
+  }
+
+  .header-right {
+    gap: 10px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .topbar-user-name,
+  .topbar-chevron {
+    display: none !important;
+  }
+
+  .topbar-user-btn {
+    padding: 0;
+    width: 36px;
+    height: 36px;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .topbar-user-avatar {
+    width: 34px;
+    height: 34px;
+  }
+
+  .topbar-notif-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .user-dropdown-menu {
+    right: 0;
+    min-width: 240px;
+    max-width: calc(100vw - 24px);
   }
 
   .role-switcher-box {
