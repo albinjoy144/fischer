@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fischer Promotion Management Portal | Innovative Fixing Systems</title>
+  <meta name="description" content="fischer Promotion Management System - Track promotion and branding activities, supervisor performance, dealer and branch sales with gap comparison analysis.">
+
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Application Stylesheet -->
+  <link rel="stylesheet" href="css/style.css?v=2">
+
+  <!-- Immediate Session Auth State Detection -->
+  <script>
+    (function() {
+      try {
+        var s = localStorage.getItem("fischer_promo_mgmt_v1");
+        if (s) {
+          var parsed = JSON.parse(s);
+          if (parsed.isLoggedIn !== false) {
+            document.documentElement.classList.add("is-authenticated");
+          }
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ========================================================================
+       1. Login Hero Screen (fischer Split Hero)
+       ======================================================================== -->
+  <!-- ========================================================================
+       1. Login Hero Screen (fischer Exact Match Split Hero)
+       ======================================================================== -->
+  <div id="login-screen">
+    <!-- Left Hero Panel -->
+    <div class="login-left-hero">
+      <!-- Exact Curved Gradient Vector Overlay -->
+      <svg class="login-hero-curve-svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="heroRedGrad" x1="0%" y1="0%" x2="70%" y2="100%">
+            <stop offset="0%" stop-color="#C80916" />
+            <stop offset="30%" stop-color="#B20813" />
+            <stop offset="60%" stop-color="#7B050D" />
+            <stop offset="85%" stop-color="#300205" />
+            <stop offset="100%" stop-color="#0E0102" />
+          </linearGradient>
+          <linearGradient id="topFacetGrad" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#6B040A" />
+            <stop offset="100%" stop-color="#990710" />
+          </linearGradient>
+          <linearGradient id="contentBackdropGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="rgba(190, 10, 22, 0.95)" />
+            <stop offset="55%" stop-color="rgba(130, 6, 14, 0.9)" />
+            <stop offset="82%" stop-color="rgba(40, 2, 6, 0.75)" />
+            <stop offset="100%" stop-color="transparent" />
+          </linearGradient>
+          <linearGradient id="bottomDarkFade" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="transparent" />
+            <stop offset="40%" stop-color="rgba(0,0,0,0.5)" />
+            <stop offset="100%" stop-color="rgba(0,0,0,0.92)" />
+          </linearGradient>
+          <filter id="heroShadow" x="-10%" y="-10%" width="140%" height="140%">
+            <feDropShadow dx="16" dy="6" stdDeviation="20" flood-color="#000000" flood-opacity="0.75" />
+          </filter>
+        </defs>
+        <polygon points="650,0 960,0 750,340" fill="url(#topFacetGrad)" opacity="0.95" />
+        <path d="M0,0 L940,0 C910,180 870,360 840,500 C800,680 730,840 640,1000 L0,1000 Z" fill="url(#heroRedGrad)" filter="url(#heroShadow)" />
+        <rect x="0" y="0" width="1000" height="1000" fill="url(#contentBackdropGrad)" opacity="0.65" />
+        <rect x="0" y="600" width="1000" height="400" fill="url(#bottomDarkFade)" />
+      </svg>
+
+      <div class="login-left-content">
+        <!-- Top Brand Area -->
+        <div class="login-brand-top">
+          <div class="login-brand-logo-row">
+            <img src="assets/fischer-logo-white.svg" alt="fischer" class="login-fischer-logo-img" />
+          </div>
+          <div class="login-portal-badge">
+            PROMOTION MANAGEMENT PORTAL
+          </div>
+        </div>
+
+        <!-- Main Headlines -->
+        <div class="login-hero-headline">
+          <h1>Stronger Partnerships<br>Brighter Growth</h1>
+          <p class="login-hero-subnav">
+            Manage Promotions <span>|</span> Track Activities <span>|</span> Drive Sales
+          </p>
+        </div>
+
+        <!-- 6 Feature Icons Grid (2x3) -->
+        <div class="login-features-grid">
+          <div class="login-feature-item">
+            <div class="login-feature-icon"><i class="fa-solid fa-bullhorn"></i></div>
+            <div class="login-feature-text">Promotion &amp;<br>Branding Activities</div>
+          </div>
+          <div class="login-feature-item">
+            <div class="login-feature-icon"><i class="fa-regular fa-calendar-days"></i></div>
+            <div class="login-feature-text">Event Management</div>
+          </div>
+          <div class="login-feature-item">
+            <div class="login-feature-icon"><i class="fa-solid fa-chart-column"></i></div>
+            <div class="login-feature-text">Sales Tracking<br>&amp; Reports</div>
+          </div>
+          <div class="login-feature-item">
+            <div class="login-feature-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="login-feature-text">Branch &amp; Location<br>Coverage</div>
+          </div>
+          <div class="login-feature-item">
+            <div class="login-feature-icon"><i class="fa-solid fa-users"></i></div>
+            <div class="login-feature-text">Dealer &amp; Supervisor<br>Management</div>
+          </div>
+          <div class="login-feature-item">
+            <div class="login-feature-icon"><i class="fa-regular fa-file-lines"></i></div>
+            <div class="login-feature-text">Real-time Insights<br>for Better Decisions</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Left Bottom Motto -->
+      <div class="login-left-bottom">
+        <div class="login-bottom-divider"></div>
+        <span>BUILDING A STRONGER TOMORROW</span>
+      </div>
+    </div>
+
+    <!-- Right Form Panel -->
+    <div class="login-right-area">
+      <!-- Top Language Selector -->
+      <div class="login-lang-select">
+        <i class="fa-solid fa-globe"></i>
+        <span>English</span>
+        <i class="fa-solid fa-chevron-down" style="font-size: 0.72rem; margin-left: 2px;"></i>
+      </div>
+
+      <!-- Main Login Card -->
+      <div class="login-form-card">
+        <div class="login-form-header">
+          <h2 class="login-form-title">Welcome Back</h2>
+          <p class="login-form-subtitle">Login to your Promotion Management Portal</p>
+        </div>
+
+        <form id="login-form" onsubmit="app.handleLoginFormSubmit(event)">
+          <div class="login-field-group">
+            <label class="login-field-label">Username</label>
+            <div class="login-input-container">
+              <i class="fa-regular fa-user login-addon-icon"></i>
+              <input type="text" id="login-username-input" class="login-text-input" placeholder="Enter your username" value="" required>
+            </div>
+          </div>
+
+          <div class="login-field-group">
+            <label class="login-field-label">Password</label>
+            <div class="login-input-container">
+              <i class="fa-solid fa-lock login-addon-icon"></i>
+              <input type="password" id="login-password-input" class="login-text-input" placeholder="Enter your password" value="" required>
+              <button type="button" class="login-eye-btn" onclick="app.togglePasswordVisibility()">
+                <i class="fa-regular fa-eye-slash" id="pwd-eye-icon"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="login-helpers-row">
+            <label class="login-remember-box">
+              <input type="checkbox" id="login-remember-checkbox">
+              <span>Remember me</span>
+            </label>
+            <a href="#" class="login-forgot-pwd" onclick="app.showToast('Please contact your administrator to reset credentials.', 'info'); return false;">Forgot Password?</a>
+          </div>
+
+          <button type="submit" class="login-btn-primary">
+            Login <i class="fa-solid fa-arrow-right" style="margin-left: 6px;"></i>
+          </button>
+        </form>
+
+        <div class="login-or-divider">
+          <span>or</span>
+        </div>
+
+        <!-- Authorized Access Banner -->
+        <div class="login-security-notice">
+          <div class="notice-shield-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div class="notice-text-content">
+            <div class="notice-title">Authorized Access Only</div>
+            <div class="notice-subtext">This system is for fischer internal use and authorized partners only.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Bottom Motto -->
+      <div class="login-right-bottom">
+        INNOVATION <span>|</span> QUALITY <span>|</span> PARTNERSHIP
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       2. Main Portal App Layout
+       ======================================================================== -->
+  <div id="app-container">
+
+    <!-- 1. Full-Width White Top Header (Exact Match to Design) -->
+    <header class="top-header">
+      <div class="header-left">
+        <button class="btn-sidebar-toggle" id="btn-sidebar-toggle" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="header-brand-wrap">
+          <img src="assets/fischer-logo.svg" alt="fischer" class="header-fischer-logo" />
+          <span class="header-brand-sep">|</span>
+          <span class="header-portal-title">Promotion Management</span>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <!-- Notification Bell with Red Badge '3' -->
+        <button class="topbar-notif-btn" id="btn-topbar-notif" title="3 Notifications" onclick="app.showNotificationModal()">
+          <i class="fa-solid fa-bell"></i>
+          <span class="notif-badge">3</span>
+        </button>
+
+        <!-- User Profile Dropdown Pill -->
+        <div class="topbar-user-dropdown" id="topbar-user-dropdown">
+          <button class="topbar-user-btn" id="topbar-user-btn" onclick="app.toggleUserDropdown(event)" aria-expanded="false">
+            <div class="topbar-user-avatar">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <span class="topbar-user-name" id="topbar-user-name">Company Admin</span>
+            <i class="fa-solid fa-chevron-down topbar-chevron"></i>
+          </button>
+
+          <!-- Dropdown Menu -->
+          <div class="user-dropdown-menu" id="user-dropdown-menu">
+            <div class="dropdown-header">
+              <div class="dropdown-user-title" id="dropdown-user-name">Corporate Admin</div>
+              <div class="dropdown-user-role" id="dropdown-user-role">Company Admin</div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-section-title"><i class="fa-solid fa-eye"></i> Switch Perspective Role</div>
+            <button type="button" class="dropdown-role-option" onclick="app.switchRoleFromDropdown('Company Admin')">
+              <i class="fa-solid fa-user-shield" style="color: #E30613;"></i> Company Admin
+            </button>
+            <button type="button" class="dropdown-role-option" onclick="app.switchRoleFromDropdown('Sales / Marketing Head')">
+              <i class="fa-solid fa-user-tie" style="color: #2563EB;"></i> Sales / Marketing Head
+            </button>
+            <button type="button" class="dropdown-role-option" onclick="app.switchRoleFromDropdown('Sales Supervisor')">
+              <i class="fa-solid fa-user-gear" style="color: #D97706;"></i> Sales Supervisor
+            </button>
+            <button type="button" class="dropdown-role-option" onclick="app.switchRoleFromDropdown('Dealer User')">
+              <i class="fa-solid fa-store" style="color: #16A34A;"></i> Dealer User (Fine Tools)
+            </button>
+            <div class="dropdown-divider"></div>
+            <button type="button" class="dropdown-action-item" onclick="app.resetDemoData()">
+              <i class="fa-solid fa-rotate-left"></i> Reset Seed Data
+            </button>
+            <button type="button" class="dropdown-action-item text-danger" onclick="app.logout()">
+              <i class="fa-solid fa-right-from-bracket"></i> Sign Out
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. Main App Body (Sidebar + Content Viewport) -->
+    <div class="app-body">
+      <!-- Sidebar Navigation -->
+      <aside class="sidebar">
+        <nav class="sidebar-nav">
+          <!-- 1. Dashboard -->
+          <div class="nav-item active" data-nav="dashboard">
+            <i class="fa-solid fa-house"></i>
+            <span>Dashboard</span>
+          </div>
+
+          <!-- 2. Promotion / Branding -->
+          <div class="nav-item" data-nav="master_events">
+            <i class="fa-solid fa-bullhorn"></i>
+            <span>Promotion / Branding</span>
+          </div>
+
+          <!-- 3. Sales / Marketing Head -->
+          <div class="nav-item" data-nav="manage_heads">
+            <i class="fa-solid fa-users"></i>
+            <span>Sales / Marketing Head</span>
+          </div>
+
+          <!-- 4. Sales Supervisor -->
+          <div class="nav-item" data-nav="manage_supervisors">
+            <i class="fa-solid fa-user"></i>
+            <span>Sales Supervisor</span>
+          </div>
+
+          <!-- 5. Dealer -->
+          <div class="nav-item" data-nav="manage_dealers">
+            <i class="fa-solid fa-store"></i>
+            <span>Dealer</span>
+          </div>
+
+          <!-- 6. Events -->
+          <div class="nav-item" data-nav="manage_events">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span>Events</span>
+          </div>
+
+          <!-- 7. Dealer Sales -->
+          <div class="nav-item" data-nav="dealer_sales">
+            <i class="fa-solid fa-chart-simple"></i>
+            <span>Dealer Sales</span>
+          </div>
+
+          <!-- 8. Reports Group -->
+          <div class="nav-group expanded" id="nav-group-reports">
+            <div class="nav-item nav-group-header" onclick="app.toggleReportsMenu(event)">
+              <i class="fa-solid fa-file-lines"></i>
+              <span>Reports</span>
+              <i class="fa-solid fa-chevron-down nav-chevron"></i>
+            </div>
+            <div class="sidebar-subnav" id="reports-subnav">
+              <div class="subnav-item" data-nav="reports_supervisor">
+                <span class="subnav-dot dot-red"></span>
+                <span>Sales Supervisor Report</span>
+              </div>
+              <div class="subnav-item" data-nav="reports_dealer">
+                <span class="subnav-dot dot-slate"></span>
+                <span>Dealer Sales Report</span>
+              </div>
+              <div class="subnav-item" data-nav="reports_gap">
+                <span class="subnav-dot dot-slate"></span>
+                <span>Dealer Activity Report</span>
+              </div>
+              <div class="subnav-item" data-nav="reports_head">
+                <span class="subnav-dot dot-slate"></span>
+                <span>Event Report</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 9. Master Data -->
+          <div class="nav-item" data-nav="master_events">
+            <i class="fa-solid fa-database"></i>
+            <span>Master Data</span>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- Mobile Sidebar Backdrop -->
+      <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+
+      <!-- Main Viewport Area -->
+      <main class="main-wrapper">
+        <!-- Content Viewport -->
+        <section class="content-viewport">
+          
+          <!-- 1. Dashboard View (Exact Match to Uploaded Screenshot) -->
+          <div id="view-dashboard" class="view-section active">
+            <!-- 1. Hero Header Banner -->
+            <div class="page-hero-banner">
+              <div>
+                <div class="page-hero-welcome">WELCOME TO FISCHER</div>
+                <h2 class="page-hero-title">Sales Supervisor Report (Monthly)</h2>
+                <p class="page-hero-subtitle">Track performance, analyze growth and drive success.</p>
+              </div>
+              <div class="page-hero-actions">
+                <div class="hero-pill-select"><i class="fa-regular fa-calendar"></i> Mar 2024 <i class="fa-solid fa-chevron-down" style="font-size:0.75rem; margin-left: 4px;"></i></div>
+                <button class="hero-export-btn" onclick="app.exportTableToCSV('sup-performance-details-table', 'sales_supervisor_report.csv')">
+                  <i class="fa-solid fa-download"></i> Export <i class="fa-solid fa-chevron-down" style="font-size:0.75rem; margin-left: 4px;"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- 2. Rounded Filter Bar -->
+            <div class="rounded-filter-bar">
+              <div class="filter-pill-item">
+                <span class="filter-pill-label">Month <span class="req">*</span></span>
+                <select class="filter-pill-control" id="rep-filter-month">
+                  <option value="2024-03">Mar 2024</option>
+                  <option value="2024-02">Feb 2024</option>
+                  <option value="2024-01">Jan 2024</option>
+                </select>
+              </div>
+              <div class="filter-pill-item">
+                <span class="filter-pill-label">Sales Supervisor</span>
+                <select class="filter-pill-control" id="rep-filter-sup">
+                  <option value="ALL">👤 All Supervisors</option>
+                  <option value="sup_1">Ramesh Kumar</option>
+                  <option value="sup_2">Sara Ahmed</option>
+                  <option value="sup_3">Mohammed Ali</option>
+                  <option value="sup_4">Anita Sharma</option>
+                  <option value="sup_5">David Lee</option>
+                </select>
+              </div>
+              <div class="filter-pill-item">
+                <span class="filter-pill-label">Dealer</span>
+                <select class="filter-pill-control" id="rep-filter-dealer">
+                  <option value="ALL">👤 All Dealers</option>
+                  <option value="dlr_1">Fine Tools Trading</option>
+                  <option value="dlr_2">BuildRight Hardware</option>
+                  <option value="dlr_3">Pro Hardware Supplies</option>
+                  <option value="dlr_4">Modern Build Materials</option>
+                </select>
+              </div>
+              <div class="filter-pill-item">
+                <span class="filter-pill-label">Branch</span>
+                <select class="filter-pill-control" id="rep-filter-branch">
+                  <option value="ALL">🏛️ All Branches</option>
+                  <option value="br_1">Deira Main Branch</option>
+                  <option value="br_2">Al Quoz Store</option>
+                  <option value="br_3">Sharjah Industrial</option>
+                </select>
+              </div>
+              <div class="filter-pill-item">
+                <span class="filter-pill-label">Location</span>
+                <select class="filter-pill-control" id="rep-filter-loc">
+                  <option value="ALL">📍 All Locations</option>
+                  <option value="Dubai">Dubai</option>
+                  <option value="Sharjah">Sharjah</option>
+                  <option value="Abu Dhabi">Abu Dhabi</option>
+                  <option value="Ajman">Ajman</option>
+                </select>
+              </div>
+              <button class="btn-filter-view" onclick="app.showToast('Report refreshed for selected filters', 'success')">
+                <i class="fa-solid fa-magnifying-glass"></i> View Report
+              </button>
+              <button class="btn-filter-reset" onclick="app.renderCurrentView()">Reset</button>
+            </div>
+
+            <!-- 3. Exact 6 KPI Metric Cards Row -->
+            <div class="metrics-row-6">
+              <!-- Card 1: Total Sales (AED) -->
+              <div class="ref-stat-card">
+                <div class="ref-card-header">
+                  <div class="ref-card-icon red"><i class="fa-solid fa-coins"></i></div>
+                  <div class="ref-card-title-box">
+                    <div class="ref-card-label">Total Sales (AED)</div>
+                    <div class="ref-card-value">245,800</div>
+                  </div>
+                </div>
+                <div class="ref-card-bottom">
+                  <div class="ref-trend-text up"><i class="fa-solid fa-arrow-up"></i> +12% <span style="font-weight: 500; color: #64748B;">vs. previous month</span></div>
+                </div>
+                <svg class="ref-wave-bg" viewBox="0 0 500 150" preserveAspectRatio="none">
+                  <path d="M0,80 C150,140 350,20 500,90 L500,150 L0,150 Z" fill="#E30613"></path>
+                </svg>
+              </div>
+
+              <!-- Card 2: Total Target (AED) -->
+              <div class="ref-stat-card">
+                <div class="ref-card-header">
+                  <div class="ref-card-icon orange"><i class="fa-solid fa-bullseye"></i></div>
+                  <div class="ref-card-title-box">
+                    <div class="ref-card-label">Total Target (AED)</div>
+                    <div class="ref-card-value">300,000</div>
+                  </div>
+                </div>
+                <div class="ref-card-bottom" style="flex-direction: column; align-items: flex-start; gap: 6px;">
+                  <div style="display: flex; justify-content: space-between; width: 100%; font-size: 0.72rem; font-weight: 700; color: #FF7A00;">
+                    <span></span>
+                    <span>77%</span>
+                  </div>
+                  <div class="ref-progress-track">
+                    <div class="ref-progress-fill orange" style="width: 77%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3: Achievement -->
+              <div class="ref-stat-card">
+                <div class="ref-card-header">
+                  <div class="ref-card-icon green"><i class="fa-solid fa-trophy"></i></div>
+                  <div class="ref-card-title-box">
+                    <div class="ref-card-label">Achievement</div>
+                    <div class="ref-card-value">82%</div>
+                  </div>
+                </div>
+                <div class="ref-card-bottom" style="margin-top: 14px;">
+                  <div class="ref-progress-track">
+                    <div class="ref-progress-fill green" style="width: 82%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 4: Total Supervisors -->
+              <div class="ref-stat-card">
+                <div class="ref-card-header">
+                  <div class="ref-card-icon purple"><i class="fa-solid fa-users"></i></div>
+                  <div class="ref-card-title-box">
+                    <div class="ref-card-label">Total Supervisors</div>
+                    <div class="ref-card-value">5</div>
+                  </div>
+                </div>
+                <div class="ref-card-bottom">
+                  <div class="ref-trend-text purple"><i class="fa-solid fa-users"></i> ↑ +0</div>
+                  <svg class="ref-sparkline-svg" viewBox="0 0 60 24">
+                    <path d="M0,18 Q15,4 30,12 T60,6" fill="none" stroke="#7C3AED" stroke-width="2.5" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Card 5: Total Dealers -->
+              <div class="ref-stat-card">
+                <div class="ref-card-header">
+                  <div class="ref-card-icon blue"><i class="fa-solid fa-store"></i></div>
+                  <div class="ref-card-title-box">
+                    <div class="ref-card-label">Total Dealers</div>
+                    <div class="ref-card-value">18</div>
+                  </div>
+                </div>
+                <div class="ref-card-bottom">
+                  <div class="ref-trend-text blue"><i class="fa-solid fa-arrow-up"></i> +2</div>
+                  <svg class="ref-sparkline-svg" viewBox="0 0 60 24">
+                    <path d="M0,20 Q15,16 30,8 T60,4" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Card 6: Total Branches -->
+              <div class="ref-stat-card">
+                <div class="ref-card-header">
+                  <div class="ref-card-icon teal"><i class="fa-solid fa-building"></i></div>
+                  <div class="ref-card-title-box">
+                    <div class="ref-card-label">Total Branches</div>
+                    <div class="ref-card-value">42</div>
+                  </div>
+                </div>
+                <div class="ref-card-bottom">
+                  <div class="ref-trend-text teal"><i class="fa-solid fa-arrow-up"></i> +3</div>
+                  <svg class="ref-sparkline-svg" viewBox="0 0 60 24">
+                    <path d="M0,22 Q20,18 35,10 T60,2" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Two Charts Grid (Split 1.4 : 1) -->
+            <div class="grid-charts-supervisor">
+              <!-- Left: Sales vs Target by Sales Supervisor -->
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    <span class="card-title-badge red"><i class="fa-solid fa-file-lines"></i></span>
+                    Sales vs Target by Sales Supervisor
+                  </h3>
+                  <div class="chart-legend-top">
+                    <span><span class="legend-dot red"></span> Sales Amount</span>
+                    <span><span class="legend-dot light-blue"></span> Sales Target</span>
+                  </div>
+                </div>
+                <div class="card-body" style="height: 310px; position: relative;">
+                  <canvas id="chart-sales-vs-target-main"></canvas>
+                </div>
+              </div>
+
+              <!-- Right: Supervisors by Target Achievement Donut -->
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    <span class="card-title-badge green"><i class="fa-solid fa-users"></i></span>
+                    Supervisors by Target Achievement
+                  </h3>
+                </div>
+                <div class="card-body donut-chart-container">
+                  <div class="donut-chart-wrap">
+                    <canvas id="chart-supervisors-donut"></canvas>
+                    <div class="donut-center-label">
+                      <div class="donut-center-num">5</div>
+                      <div class="donut-center-sub">Supervisors</div>
+                    </div>
+                  </div>
+                  <div class="donut-legend-list">
+                    <div class="donut-legend-row">
+                      <div class="donut-legend-title"><span class="legend-bullet green"></span> 100% and above</div>
+                      <div class="donut-legend-count">2</div>
+                      <div class="donut-legend-pct">40%</div>
+                    </div>
+                    <div class="donut-legend-row">
+                      <div class="donut-legend-title"><span class="legend-bullet orange"></span> 60% - 80%</div>
+                      <div class="donut-legend-count">2</div>
+                      <div class="donut-legend-pct">40%</div>
+                    </div>
+                    <div class="donut-legend-row">
+                      <div class="donut-legend-title"><span class="legend-bullet red"></span> Less than 60%</div>
+                      <div class="donut-legend-count">1</div>
+                      <div class="donut-legend-pct">20%</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. Table: Sales Supervisor Performance Details -->
+            <div class="card" style="margin-top: 20px;">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <span class="card-title-badge orange"><i class="fa-solid fa-clipboard-list"></i></span>
+                  Sales Supervisor Performance Details
+                </h3>
+              </div>
+              <div class="table-responsive">
+                <table class="data-table ref-details-table" id="sup-performance-details-table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Sales Supervisor</th>
+                      <th>No. of Dealers</th>
+                      <th>No. of Branches</th>
+                      <th>Sales Amount (AED)</th>
+                      <th>Sales Target (AED)</th>
+                      <th>Achievement</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td><strong>Ramesh Kumar</strong></td>
+                      <td>6</td>
+                      <td>14</td>
+                      <td>75,200</td>
+                      <td>90,000</td>
+                      <td><span class="achieve-pill green">84%</span></td>
+                      <td><span class="status-pill green">On Track</span></td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td><strong>Sara Ahmed</strong></td>
+                      <td>4</td>
+                      <td>8</td>
+                      <td>48,600</td>
+                      <td>60,000</td>
+                      <td><span class="achieve-pill green">81%</span></td>
+                      <td><span class="status-pill green">On Track</span></td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td><strong>Mohammed Ali</strong></td>
+                      <td>3</td>
+                      <td>7</td>
+                      <td>39,800</td>
+                      <td>50,000</td>
+                      <td><span class="achieve-pill orange">80%</span></td>
+                      <td><span class="status-pill orange">Needs Attention</span></td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td><strong>Anita Sharma</strong></td>
+                      <td>4</td>
+                      <td>9</td>
+                      <td>57,300</td>
+                      <td>70,000</td>
+                      <td><span class="achieve-pill green">82%</span></td>
+                      <td><span class="status-pill green">On Track</span></td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td><strong>David Lee</strong></td>
+                      <td>1</td>
+                      <td>4</td>
+                      <td>24,900</td>
+                      <td>50,000</td>
+                      <td><span class="achieve-pill red">50%</span></td>
+                      <td><span class="status-pill red">At Risk</span></td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr class="table-total-row">
+                      <td colspan="2"><strong>Total</strong></td>
+                      <td><strong>18</strong></td>
+                      <td><strong>42</strong></td>
+                      <td><strong>245,800</strong></td>
+                      <td><strong>300,000</strong></td>
+                      <td><span class="achieve-pill green">82%</span></td>
+                      <td>-</td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Master Data View -->
+          <div id="view-master_events" class="view-section">
+            <div id="master-events-container"></div>
+          </div>
+
+          <!-- 3. Sales / Marketing Heads View -->
+          <div id="view-manage_heads" class="view-section">
+            <div id="manage-heads-container"></div>
+          </div>
+
+          <!-- 4. Sales Supervisors View -->
+          <div id="view-manage_supervisors" class="view-section">
+            <div id="manage-supervisors-container"></div>
+          </div>
+
+          <!-- 5. Dealers & Branches View -->
+          <div id="view-manage_dealers" class="view-section">
+            <div id="manage-dealers-container"></div>
+          </div>
+
+          <!-- 6. Manage Events View -->
+          <div id="view-manage_events" class="view-section">
+            <div id="manage-events-container"></div>
+          </div>
+
+          <!-- 7. Dealer Sales View -->
+          <div id="view-dealer_sales" class="view-section">
+            <div id="dealer-sales-container"></div>
+          </div>
+
+          <!-- 8. Reports: Sales Head Report -->
+          <div id="view-reports_head" class="view-section">
+            <div id="reports-head-container"></div>
+          </div>
+
+          <!-- 9. Reports: Supervisor Report -->
+          <div id="view-reports_supervisor" class="view-section">
+            <div id="reports-supervisor-container"></div>
+          </div>
+
+          <!-- 10. Reports: Dealer Sales Report -->
+          <div id="view-reports_dealer" class="view-section">
+            <div id="reports-dealer-container"></div>
+          </div>
+
+          <!-- 11. Reports: Gap Analysis -->
+          <div id="view-reports_gap" class="view-section">
+            <div id="reports-gap-container"></div>
+          </div>
+
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       3. Global Modals & Notifications
+       ======================================================================== -->
+  
+  <!-- Generic Action Modal -->
+  <div id="generic-modal" class="modal-backdrop">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title" id="generic-modal-title">fischer Portal</h3>
+        <button type="button" class="modal-close-btn modal-close-trigger"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" id="generic-modal-body">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Application Scripts -->
+  <script src="js/data.js?v=3"></script>
+  <script src="js/app.js?v=3"></script>
+</body>
+</html>
