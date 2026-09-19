@@ -696,18 +696,18 @@ html.is-authenticated #app-container {
 
 .page-title-row {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 4px;
   margin-bottom: 16px;
-  flex-wrap: wrap;
-  gap: 16px;
   position: relative;
 }
 
-.page-title-row > div:first-child,
-.page-title-row .page-title-col {
-  flex: 1;
-  min-width: 0;
+.page-title-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
 }
 
 .page-hero-welcome {
@@ -2488,33 +2488,39 @@ textarea.form-control {
 
   .page-title-row {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 16px;
+    width: 100%;
+  }
+
+  .page-title-header {
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
   }
 
-  .page-title-row > div:first-child,
-  .page-title-row .page-title-col {
-    flex: 1;
-    min-width: 0;
-  }
-
+  .page-title-header .page-title,
   .page-hero-title,
   .page-title {
-    font-size: clamp(1.25rem, 4.5vw, 1.5rem);
+    font-size: clamp(1.2rem, 4.6vw, 1.55rem);
     line-height: 1.25;
+    margin: 0;
   }
 
+  .page-title-row .page-subtitle,
   .page-hero-subtitle,
   .page-subtitle {
-    font-size: 0.82rem;
-    line-height: 1.35;
-    margin-top: 3px;
+    font-size: 0.83rem;
+    line-height: 1.4;
+    color: #64748B;
+    margin-top: 2px;
+    width: 100%;
   }
 
+  .page-title-header .page-actions,
   .page-title-row .page-actions {
     width: auto;
     display: flex;
@@ -2524,6 +2530,7 @@ textarea.form-control {
     flex-shrink: 0;
   }
 
+  .page-title-header .page-actions .btn,
   .page-title-row .page-actions .btn {
     flex: initial;
     width: auto;
@@ -2531,6 +2538,7 @@ textarea.form-control {
     font-size: 0.82rem;
     white-space: nowrap;
     border-radius: var(--radius-md);
+    box-sizing: border-box;
   }
 
   .page-hero-actions {
