@@ -2433,6 +2433,47 @@ textarea.form-control {
 }
 
 @media (max-width: 768px) {
+  .page-hero-banner,
+  .page-title-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .page-hero-title,
+  .page-title {
+    font-size: clamp(1.35rem, 5vw, 1.6rem);
+    line-height: 1.25;
+  }
+
+  .page-hero-subtitle,
+  .page-subtitle {
+    font-size: 0.84rem;
+    line-height: 1.4;
+  }
+
+  .page-hero-actions,
+  .page-actions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-pill-select,
+  .hero-export-btn,
+  .page-hero-actions .btn,
+  .page-actions .btn {
+    flex: 1;
+    min-width: 0;
+    justify-content: center;
+    text-align: center;
+    padding: 8px 12px;
+    font-size: 0.82rem;
+    box-sizing: border-box;
+  }
+
   .metrics-row-6,
   .metrics-row-3,
   .metrics-grid {
