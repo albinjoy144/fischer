@@ -2448,7 +2448,7 @@ class AppController {
 
     container.innerHTML = `
       <div class="page-title-row">
-        <div>
+        <div class="page-title-col">
           <h2 class="page-title">Dealer Sales Tracking</h2>
           <p class="page-subtitle">Record and benchmark branch sales figures with target badging rules (<60% Red, 60-80% Orange, 80-100% Blue, 100%+ Green).</p>
         </div>
@@ -2458,10 +2458,12 @@ class AppController {
       </div>
 
       <!-- Target Badging Legend Banner -->
-      <div class="card" style="background: #FFFFFF; margin-bottom: 20px;">
-        <div class="card-body" style="padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: gap; gap: 12px;">
-          <div style="font-size: 0.85rem; font-weight: 700; color: var(--text-primary);"><i class="fa-solid fa-shield-halved" style="color: var(--fischer-red);"></i> Sales Target Badging Matrix:</div>
-          <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+      <div class="card badging-legend-card" style="background: #FFFFFF; margin-bottom: 20px;">
+        <div class="card-body">
+          <div class="badging-legend-title">
+            <i class="fa-solid fa-shield-halved" style="color: var(--fischer-red);"></i> Sales Target Badging Matrix:
+          </div>
+          <div class="badging-legend-badges">
             <span class="badge badge-danger"><i class="fa-solid fa-circle-exclamation"></i> Less than 60% (Critical)</span>
             <span class="badge badge-warning"><i class="fa-solid fa-triangle-exclamation"></i> 60% - 80% (Moderate)</span>
             <span class="badge badge-info"><i class="fa-solid fa-check"></i> 80% - 100% (On Track)</span>

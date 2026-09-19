@@ -1737,6 +1737,43 @@ textarea.form-control {
 .badge-info { background: var(--badge-blue-bg); color: var(--badge-blue-text); }
 .badge-neutral { background: #F1F5F9; color: #475569; }
 
+/* Badging Legend Card */
+.badging-legend-card {
+  background: #FFFFFF;
+  margin-bottom: 20px;
+}
+
+.badging-legend-card .card-body {
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.badging-legend-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.badging-legend-badges {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.badging-legend-badges .badge {
+  padding: 5px 12px;
+  font-size: 0.78rem;
+}
+
 .status-pill {
   display: inline-block;
   padding: 3px 10px;
@@ -2622,6 +2659,42 @@ textarea.form-control {
   .metrics-row-3,
   .metrics-grid {
     grid-template-columns: 1fr !important;
+  }
+
+  .badging-legend-card .card-body {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .badging-legend-title {
+    width: 100%;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .badging-legend-badges {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .badging-legend-badges .badge {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 7px 8px;
+    font-size: 0.76rem;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 360px) {
+    .badging-legend-badges {
+      grid-template-columns: 1fr;
+    }
   }
 
   .modal-backdrop {
