@@ -656,6 +656,7 @@ html.is-authenticated #app-container {
 .content-viewport {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 0;
   background: transparent;
   -webkit-overflow-scrolling: touch;
@@ -667,8 +668,14 @@ html.is-authenticated #app-container {
   display: none;
   padding: 18px;
   width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   box-sizing: border-box;
   animation: fadeIn 0.2s ease-out forwards;
+}
+
+.btn-text-short {
+  display: none;
 }
 
 .view-section.active {
@@ -2591,9 +2598,19 @@ textarea.form-control {
     flex-wrap: nowrap;
   }
 
-  .page-title-col {
+  .page-title-col,
+  .page-title-row > div:first-child,
+  .page-hero-banner > div:first-child {
     flex: 1;
     min-width: 0;
+  }
+
+  .btn-text-full {
+    display: none;
+  }
+
+  .btn-text-short {
+    display: inline;
   }
 
   .page-hero-welcome {

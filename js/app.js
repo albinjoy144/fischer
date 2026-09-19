@@ -750,12 +750,14 @@ class AppController {
 
     container.innerHTML = `
       <div class="page-title-row">
-        <div>
+        <div class="page-title-col">
           <h2 class="page-title">Promotion / Branding Activities (Master Data)</h2>
           <p class="page-subtitle">Configure promotion event types, POS displays, print items, campaigns and sample visual collateral.</p>
         </div>
         <div class="page-actions">
-          <button class="btn btn-primary" onclick="app.openAddActivityModal()"><i class="fa-solid fa-plus"></i> Add Activity to ${currentType ? currentType.name : 'Category'}</button>
+          <button class="btn btn-primary" onclick="app.openAddActivityModal()">
+            <i class="fa-solid fa-plus"></i> <span class="btn-text-full">Add Activity to ${currentType ? currentType.name : 'Category'}</span><span class="btn-text-short">Add Activity</span>
+          </button>
         </div>
       </div>
 
@@ -1070,7 +1072,7 @@ class AppController {
 
     container.innerHTML = `
       <div class="page-title-row">
-        <div>
+        <div class="page-title-col">
           <h2 class="page-title">Manage Sales / Marketing Heads</h2>
           <p class="page-subtitle">Configure regional sales directors, assign territorial oversight and manage access.</p>
         </div>
@@ -1254,7 +1256,7 @@ class AppController {
 
     container.innerHTML = `
       <div class="page-title-row">
-        <div>
+        <div class="page-title-col">
           <h2 class="page-title">Manage Sales Supervisors</h2>
           <p class="page-subtitle">Assign supervisors under Sales/Marketing Heads and manage dealer assignments.</p>
         </div>
@@ -1455,7 +1457,7 @@ class AppController {
 
     container.innerHTML = `
       <div class="page-title-row">
-        <div>
+        <div class="page-title-col">
           <h2 class="page-title">Manage Dealers & Branches</h2>
           <p class="page-subtitle">Configure dealer accounts, multiple branch locations, store photos, contact info and monthly targets.</p>
         </div>
