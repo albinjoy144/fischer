@@ -2579,13 +2579,7 @@ textarea.form-control {
 }
 
 @media (max-width: 768px) {
-  .page-hero-banner {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-
+  .page-hero-banner,
   .page-title-row {
     display: flex;
     flex-direction: row;
@@ -2602,9 +2596,21 @@ textarea.form-control {
     min-width: 0;
   }
 
+  .page-hero-welcome {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #64748B;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .page-hero-title,
   .page-title {
-    font-size: clamp(1.12rem, 4vw, 1.35rem);
+    font-size: clamp(1.05rem, 3.8vw, 1.35rem);
     line-height: 1.2;
     margin: 0;
     white-space: nowrap;
@@ -2624,6 +2630,7 @@ textarea.form-control {
     text-overflow: ellipsis;
   }
 
+  .page-hero-actions,
   .page-title-row .page-actions,
   .page-actions {
     width: auto;
@@ -2634,6 +2641,8 @@ textarea.form-control {
     flex-shrink: 0;
   }
 
+  .page-hero-actions .btn,
+  .page-hero-actions .hero-export-btn,
   .page-title-row .page-actions .btn,
   .page-actions .btn {
     flex: initial;
@@ -2649,11 +2658,18 @@ textarea.form-control {
     gap: 5px;
   }
 
-  .page-hero-actions {
-    width: 100%;
-    display: flex;
+  .page-hero-actions .hero-pill-select {
+    flex: initial;
+    width: auto;
+    padding: 6px 10px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    white-space: nowrap;
+    border-radius: var(--radius-md);
+    box-sizing: border-box;
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 4px;
   }
 
   .nav-tabs-bar {
@@ -2672,18 +2688,6 @@ textarea.form-control {
     flex-shrink: 0;
     padding: 8px 14px;
     font-size: 0.84rem;
-  }
-
-  .hero-pill-select,
-  .hero-export-btn,
-  .page-hero-actions .btn {
-    flex: 1;
-    min-width: 0;
-    justify-content: center;
-    text-align: center;
-    padding: 8px 12px;
-    font-size: 0.82rem;
-    box-sizing: border-box;
   }
 
   .card-header {

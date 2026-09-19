@@ -1893,12 +1893,12 @@ class AppController {
     container.innerHTML = `
       <!-- 1. Hero Header Banner (matching uploaded design) -->
       <div class="page-hero-banner">
-        <div>
+        <div class="page-title-col">
           <div class="page-hero-welcome">WELCOME TO FISCHER</div>
           <h2 class="page-hero-title">Manage Events & Promotion Activities</h2>
           <p class="page-hero-subtitle">Add, view and audit promotional events, roadshows, POS branding and field activities conducted across branches.</p>
         </div>
-        <div class="page-hero-actions">
+        <div class="page-hero-actions page-actions">
           <button class="btn btn-secondary" onclick="app.exportTableToCSV('events-table', 'fischer_events.csv')">
             <i class="fa-solid fa-file-export"></i> Export CSV
           </button>
@@ -2995,12 +2995,12 @@ class AppController {
     container.innerHTML = `
       <!-- 1. Hero Header Banner -->
       <div class="page-hero-banner">
-        <div>
+        <div class="page-title-col">
           <div class="page-hero-welcome">WELCOME TO FISCHER</div>
           <h2 class="page-hero-title">Sales Supervisor Report (Monthly)</h2>
           <p class="page-hero-subtitle">Track performance, analyze growth and drive success.</p>
         </div>
-        <div class="page-hero-actions">
+        <div class="page-hero-actions page-actions">
           <div class="hero-pill-select"><i class="fa-regular fa-calendar"></i> Mar 2024</div>
           <button class="hero-export-btn" onclick="app.exportTableToCSV('sup-performance-details-table', 'sales_supervisor_report.csv')">
             <i class="fa-solid fa-download"></i> Export
