@@ -684,7 +684,7 @@ html.is-authenticated #app-container {
    Page Hero Banner & Page Title Row (Standardized Header Layout)
    ========================================================================== */
 
-.page-hero-banner, .page-title-row {
+.page-hero-banner {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -692,6 +692,22 @@ html.is-authenticated #app-container {
   flex-wrap: wrap;
   gap: 16px;
   position: relative;
+}
+
+.page-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 16px;
+  position: relative;
+}
+
+.page-title-row > div:first-child,
+.page-title-row .page-title-col {
+  flex: 1;
+  min-width: 0;
 }
 
 .page-hero-welcome {
@@ -2463,42 +2479,61 @@ textarea.form-control {
 }
 
 @media (max-width: 768px) {
-  .page-hero-banner,
-  .page-title-row {
+  .page-hero-banner {
     flex-direction: column;
     align-items: stretch;
     gap: 12px;
     margin-bottom: 16px;
   }
 
+  .page-title-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .page-title-row > div:first-child,
+  .page-title-row .page-title-col {
+    flex: 1;
+    min-width: 0;
+  }
+
   .page-hero-title,
   .page-title {
-    font-size: clamp(1.35rem, 5vw, 1.6rem);
+    font-size: clamp(1.25rem, 4.5vw, 1.5rem);
     line-height: 1.25;
   }
 
   .page-hero-subtitle,
   .page-subtitle {
-    font-size: 0.84rem;
-    line-height: 1.4;
+    font-size: 0.82rem;
+    line-height: 1.35;
+    margin-top: 3px;
+  }
+
+  .page-title-row .page-actions {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .page-title-row .page-actions .btn {
+    flex: initial;
+    width: auto;
+    padding: 7px 13px;
+    font-size: 0.82rem;
+    white-space: nowrap;
+    border-radius: var(--radius-md);
   }
 
   .page-hero-actions {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .page-actions {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-  }
-
-  .page-action-buttons {
     width: 100%;
     display: flex;
     align-items: center;
@@ -2513,20 +2548,19 @@ textarea.form-control {
     white-space: nowrap;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-    margin-bottom: 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
   }
 
   .nav-tabs-bar .tab-btn {
     flex-shrink: 0;
-    padding: 8px 12px;
-    font-size: 0.82rem;
+    padding: 8px 14px;
+    font-size: 0.84rem;
   }
 
   .hero-pill-select,
   .hero-export-btn,
-  .page-hero-actions .btn,
-  .page-actions .btn,
-  .page-action-buttons .btn {
+  .page-hero-actions .btn {
     flex: 1;
     min-width: 0;
     justify-content: center;

@@ -2753,22 +2753,22 @@ class AppController {
 
     container.innerHTML = `
       <div class="page-title-row">
-        <div>
-          <h2 class="page-title">Sales / Marketing Head Report</h2>
+        <div class="page-title-col">
+          <h2 class="page-title">Event Report</h2>
           <p class="page-subtitle">Monthly and regional performance overview of sales and marketing heads.</p>
         </div>
         <div class="page-actions">
-          <div class="nav-tabs-bar" style="margin-bottom: 0; border-bottom: none;">
-            <button class="tab-btn active" onclick="app.switchReportTab(this, 'monthly')">Monthly</button>
-            <button class="tab-btn" onclick="app.switchReportTab(this, 'yearly')">Yearly</button>
-            <button class="tab-btn" onclick="app.switchReportTab(this, 'weekly')">Weekly</button>
-            <button class="tab-btn" onclick="app.switchReportTab(this, 'custom')">Custom Date</button>
-          </div>
-          <div class="page-action-buttons">
-            <button class="btn btn-secondary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button>
-            <button class="btn btn-primary" onclick="app.exportTableToCSV('head-report-table', 'sales_head_report.csv')"><i class="fa-solid fa-download"></i> Export</button>
-          </div>
+          <button class="btn btn-secondary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button>
+          <button class="btn btn-primary" onclick="app.exportTableToCSV('head-report-table', 'sales_head_report.csv')"><i class="fa-solid fa-download"></i> Export</button>
         </div>
+      </div>
+
+      <!-- Report Period Filter Tabs Bar -->
+      <div class="nav-tabs-bar">
+        <button class="tab-btn active" onclick="app.switchReportTab(this, 'monthly')">Monthly</button>
+        <button class="tab-btn" onclick="app.switchReportTab(this, 'yearly')">Yearly</button>
+        <button class="tab-btn" onclick="app.switchReportTab(this, 'weekly')">Weekly</button>
+        <button class="tab-btn" onclick="app.switchReportTab(this, 'custom')">Custom Date</button>
       </div>
 
       <!-- KPI Summary Cards (Dashboard Card Design) -->
@@ -3348,15 +3348,13 @@ class AppController {
 
     container.innerHTML = `
       <div class="page-title-row">
-        <div>
+        <div class="page-title-col">
           <h2 class="page-title">Dealer & Branch Sales Report</h2>
           <p class="page-subtitle">Deep dive into dealer performance, individual branch sales volume, location metrics and target compliance.</p>
         </div>
         <div class="page-actions">
-          <div class="page-action-buttons">
-            <button class="btn btn-secondary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button>
-            <button class="btn btn-primary" onclick="app.exportTableToCSV('dealer-report-table', 'dealer_branch_report.csv')"><i class="fa-solid fa-download"></i> Export</button>
-          </div>
+          <button class="btn btn-secondary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button>
+          <button class="btn btn-primary" onclick="app.exportTableToCSV('dealer-report-table', 'dealer_branch_report.csv')"><i class="fa-solid fa-download"></i> Export</button>
         </div>
       </div>
 
@@ -3433,15 +3431,13 @@ class AppController {
 
     container.innerHTML = `
       <div class="page-title-row">
-        <div>
+        <div class="page-title-col">
           <h2 class="page-title">Promotion Spend vs. Sales Gap Analysis</h2>
           <p class="page-subtitle">Understand correlation, ROI and gaps between promotional / branding expenditure and actual dealer revenue output.</p>
         </div>
         <div class="page-actions">
-          <div class="page-action-buttons">
-            <button class="btn btn-secondary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button>
-            <button class="btn btn-primary" onclick="app.exportTableToCSV('gap-report-table', 'promotion_sales_gap_analysis.csv')"><i class="fa-solid fa-download"></i> Export</button>
-          </div>
+          <button class="btn btn-secondary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button>
+          <button class="btn btn-primary" onclick="app.exportTableToCSV('gap-report-table', 'promotion_sales_gap_analysis.csv')"><i class="fa-solid fa-download"></i> Export</button>
         </div>
       </div>
 
