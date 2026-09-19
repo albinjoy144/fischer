@@ -2997,9 +2997,9 @@ class AppController {
           <p class="page-hero-subtitle">Track performance, analyze growth and drive success.</p>
         </div>
         <div class="page-hero-actions">
-          <div class="hero-pill-select"><i class="fa-regular fa-calendar"></i> Mar 2024 <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i></div>
+          <div class="hero-pill-select"><i class="fa-regular fa-calendar"></i> Mar 2024</div>
           <button class="hero-export-btn" onclick="app.exportTableToCSV('sup-performance-details-table', 'sales_supervisor_report.csv')">
-            <i class="fa-solid fa-download"></i> Export <i class="fa-solid fa-chevron-down" style="font-size:0.75rem;"></i>
+            <i class="fa-solid fa-download"></i> Export
           </button>
         </div>
       </div>
