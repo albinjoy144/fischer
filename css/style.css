@@ -727,6 +727,12 @@ html.is-authenticated #app-container {
   flex-wrap: wrap;
 }
 
+.page-action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .hero-pill-select {
   background: #FFFFFF;
   border: 1px solid var(--border-color);
@@ -2477,18 +2483,50 @@ textarea.form-control {
     line-height: 1.4;
   }
 
-  .page-hero-actions,
-  .page-actions {
+  .page-hero-actions {
     width: 100%;
     display: flex;
     align-items: center;
     gap: 10px;
   }
 
+  .page-actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .page-action-buttons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-tabs-bar {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 0;
+  }
+
+  .nav-tabs-bar .tab-btn {
+    flex-shrink: 0;
+    padding: 8px 12px;
+    font-size: 0.82rem;
+  }
+
   .hero-pill-select,
   .hero-export-btn,
   .page-hero-actions .btn,
-  .page-actions .btn {
+  .page-actions .btn,
+  .page-action-buttons .btn {
     flex: 1;
     min-width: 0;
     justify-content: center;

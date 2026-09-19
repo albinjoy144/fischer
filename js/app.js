@@ -2764,8 +2764,10 @@ class AppController {
             <button class="tab-btn" onclick="app.switchReportTab(this, 'weekly')">Weekly</button>
             <button class="tab-btn" onclick="app.switchReportTab(this, 'custom')">Custom Date</button>
           </div>
-          <button class="btn btn-secondary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button>
-          <button class="btn btn-primary" onclick="app.exportTableToCSV('head-report-table', 'sales_head_report.csv')"><i class="fa-solid fa-download"></i> Export</button>
+          <div class="page-action-buttons">
+            <button class="btn btn-secondary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button>
+            <button class="btn btn-primary" onclick="app.exportTableToCSV('head-report-table', 'sales_head_report.csv')"><i class="fa-solid fa-download"></i> Export</button>
+          </div>
         </div>
       </div>
 
@@ -3351,8 +3353,10 @@ class AppController {
           <p class="page-subtitle">Deep dive into dealer performance, individual branch sales volume, location metrics and target compliance.</p>
         </div>
         <div class="page-actions">
-          <button class="btn btn-secondary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button>
-          <button class="btn btn-primary" onclick="app.exportTableToCSV('dealer-report-table', 'dealer_branch_report.csv')"><i class="fa-solid fa-download"></i> Export</button>
+          <div class="page-action-buttons">
+            <button class="btn btn-secondary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button>
+            <button class="btn btn-primary" onclick="app.exportTableToCSV('dealer-report-table', 'dealer_branch_report.csv')"><i class="fa-solid fa-download"></i> Export</button>
+          </div>
         </div>
       </div>
 
@@ -3434,8 +3438,10 @@ class AppController {
           <p class="page-subtitle">Understand correlation, ROI and gaps between promotional / branding expenditure and actual dealer revenue output.</p>
         </div>
         <div class="page-actions">
-          <button class="btn btn-secondary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button>
-          <button class="btn btn-primary" onclick="app.exportTableToCSV('gap-report-table', 'promotion_sales_gap_analysis.csv')"><i class="fa-solid fa-download"></i> Export</button>
+          <div class="page-action-buttons">
+            <button class="btn btn-secondary" onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button>
+            <button class="btn btn-primary" onclick="app.exportTableToCSV('gap-report-table', 'promotion_sales_gap_analysis.csv')"><i class="fa-solid fa-download"></i> Export</button>
+          </div>
         </div>
       </div>
 
