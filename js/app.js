@@ -3656,14 +3656,25 @@ class AppController {
     const modalTitle = document.getElementById("generic-modal-title");
     const modalBody = document.getElementById("generic-modal-body");
 
-    modalTitle.textContent = caption;
+    modalTitle.innerHTML = `<i class="fa-solid fa-image" style="color: var(--fischer-red); margin-right: 8px;"></i> ${caption}`;
     modalBody.innerHTML = `
       <div class="image-lightbox-view">
-        <img src="${imageUrl}" alt="${caption}" />
-        <div style="margin-top: 12px; font-size: 0.9rem; color: var(--text-muted);">${caption}</div>
-      </div>
-      <div style="display: flex; justify-content: flex-end; margin-top: 18px;">
-        <button class="btn btn-secondary modal-close-trigger" onclick="app.closeAllModals()">Close</button>
+        <div class="image-lightbox-frame">
+          <img src="${imageUrl}" alt="${caption}" loading="lazy" />
+        </div>
+        <div class="image-lightbox-footer">
+          <div class="image-lightbox-meta">
+            <span class="badge badge-info"><i class="fa-solid fa-circle-check"></i> ${caption && caption.toLowerCase().includes('proof') ? 'Activity Proof' : 'Sample Activity Photo'}</span>
+          </div>
+          <div class="image-lightbox-actions">
+            <a href="${imageUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" title="Open full resolution in new tab">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Full
+            </a>
+            <button type="button" class="btn btn-secondary btn-sm modal-close-trigger" onclick="app.closeAllModals()">
+              <i class="fa-solid fa-xmark"></i> Close
+            </button>
+          </div>
+        </div>
       </div>
     `;
 

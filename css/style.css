@@ -1954,6 +1954,70 @@ textarea.form-control {
   background: #94A3B8;
 }
 
+/* Image Lightbox View in Modal */
+.image-lightbox-view {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.image-lightbox-frame {
+  width: 100%;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.image-lightbox-frame img {
+  width: 100%;
+  height: auto;
+  max-height: 60vh;
+  object-fit: contain;
+  display: block;
+  border-radius: calc(var(--radius-md) - 1px);
+}
+
+.image-lightbox-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-color);
+  flex-wrap: wrap;
+}
+
+.image-lightbox-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.image-lightbox-meta .badge {
+  font-size: 0.8rem;
+  padding: 5px 12px;
+}
+
+.image-lightbox-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.image-lightbox-actions .btn {
+  padding: 6px 14px;
+  font-size: 0.84rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
 /* Branch List Editor in Dealer Modal */
 .branch-list-editor {
   display: flex;
@@ -2712,6 +2776,16 @@ textarea.form-control {
     border-bottom-left-radius: 16px;
     border-bottom-right-radius: 16px;
   }
+
+  .image-lightbox-frame img {
+    max-height: 52vh;
+  }
+
+  .image-lightbox-footer {
+    gap: 10px;
+    padding-top: 12px;
+    margin-top: 12px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -2719,6 +2793,27 @@ textarea.form-control {
   .metrics-row-3,
   .metrics-grid {
     grid-template-columns: 1fr !important;
+  }
+
+  .image-lightbox-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .image-lightbox-meta {
+    justify-content: center;
+  }
+
+  .image-lightbox-actions {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+  }
+
+  .image-lightbox-actions .btn {
+    flex: 1;
+    justify-content: center;
   }
 }
 
