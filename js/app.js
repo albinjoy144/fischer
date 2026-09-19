@@ -991,7 +991,7 @@ class AppController {
         </div>
         <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 20px;">
           <button type="button" class="btn btn-secondary modal-close-trigger" onclick="app.closeAllModals()">Cancel</button>
-          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-check"></i> Save Activity</button>
+          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save Activity</button>
         </div>
       </form>
     `;
@@ -1671,7 +1671,7 @@ class AppController {
 
         <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 24px; padding-top: 14px; border-top: 1px solid var(--border-color);">
           <button type="button" class="btn btn-secondary modal-close-trigger" onclick="app.closeAllModals()">Cancel</button>
-          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-check"></i> Save Dealer Profile</button>
+          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Save Dealer Profile</button>
         </div>
       </form>
     `;
