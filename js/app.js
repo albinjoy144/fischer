@@ -163,12 +163,12 @@ class AppController {
     title.innerHTML = '<i class="fa-solid fa-bell" style="color: #E30613;"></i> Notifications & Activity Alerts';
     body.innerHTML = `
       <div style="display: flex; flex-direction: column; gap: 12px;">
-        <div style="display: flex; gap: 12px; padding: 12px; background: #FEF2F2; border-radius: 8px; border-left: 4px solid #E30613;">
-          <i class="fa-solid fa-triangle-exclamation" style="color: #E30613; margin-top: 3px; font-size: 1.1rem;"></i>
+        <div style="display: flex; gap: 12px; padding: 12px; background: #FEF2F2; border-radius: 8px; border-left: 4px solid #EF4444;">
+          <i class="fa-solid fa-triangle-exclamation" style="color: #EF4444; margin-top: 3px; font-size: 1.1rem;"></i>
           <div>
-            <div style="font-weight: 600; color: #1E293B; font-size: 0.9rem;">High Promotion Spend with Low Sales ROI</div>
-            <div style="color: #64748B; font-size: 0.82rem; margin-top: 2px;">Apex Fasteners branch spent AED 28,000 in Retail Road Show but sales achievement is at 48% of target.</div>
-            <div style="color: #94A3B8; font-size: 0.75rem; margin-top: 4px;">10 minutes ago • Supervisor: David Lee</div>
+            <div style="font-weight: 600; color: #1E293B; font-size: 0.9rem;">Target Gap Alert</div>
+            <div style="color: #64748B; font-size: 0.82rem; margin-top: 2px;">QCON Abu Dhabi branch conducted Premium Stand event and reached 78% of monthly target.</div>
+            <div style="color: #94A3B8; font-size: 0.75rem; margin-top: 4px;">10 minutes ago • Supervisor: Mehul</div>
           </div>
         </div>
 
@@ -176,7 +176,7 @@ class AppController {
           <i class="fa-solid fa-camera" style="color: #2563EB; margin-top: 3px; font-size: 1.1rem;"></i>
           <div>
             <div style="font-weight: 600; color: #1E293B; font-size: 0.9rem;">New Event Proof Photos Uploaded</div>
-            <div style="color: #64748B; font-size: 0.82rem; margin-top: 2px;">Sara Ahmed uploaded 3 POS Wall Display execution photos for Al Naboodah Hardware branch.</div>
+            <div style="color: #64748B; font-size: 0.82rem; margin-top: 2px;">Zanhar uploaded Roadshow and FSU Stand execution photos for Mohd Al Qama Al Quoz branch.</div>
             <div style="color: #94A3B8; font-size: 0.75rem; margin-top: 4px;">1 hour ago • Pending Head Approval</div>
           </div>
         </div>
@@ -184,9 +184,9 @@ class AppController {
         <div style="display: flex; gap: 12px; padding: 12px; background: #F0FDF4; border-radius: 8px; border-left: 4px solid #16A34A;">
           <i class="fa-solid fa-trophy" style="color: #16A34A; margin-top: 3px; font-size: 1.1rem;"></i>
           <div>
-            <div style="font-weight: 600; color: #1E293B; font-size: 0.9rem;">Target Exceeded (118.2%)</div>
-            <div style="color: #64748B; font-size: 0.82rem; margin-top: 2px;">Fine Tools Deira branch exceeded Q1 fixing systems sales target following the Ramadan date box campaign.</div>
-            <div style="color: #94A3B8; font-size: 0.75rem; margin-top: 4px;">3 hours ago • Supervisor: Ramesh Kumar</div>
+            <div style="font-weight: 600; color: #1E293B; font-size: 0.9rem;">Target Exceeded (124.5%)</div>
+            <div style="color: #64748B; font-size: 0.82rem; margin-top: 2px;">Leminar Gulf Um Ramool branch exceeded sales target following retail promotion campaign.</div>
+            <div style="color: #94A3B8; font-size: 0.75rem; margin-top: 4px;">3 hours ago • Supervisor: Zanhar</div>
           </div>
         </div>
 
@@ -195,7 +195,8 @@ class AppController {
         </div>
       </div>
     `;
-    modal.classList.add("active");
+
+    document.getElementById("generic-modal").classList.add("active");
   }
 
   togglePasswordVisibility() {
@@ -221,11 +222,11 @@ class AppController {
     let targetRole = "Company Admin";
     let entityId = null;
 
-    if (userVal.includes("head") || userVal.includes("markus")) {
+    if (userVal.includes("head") || userVal.includes("markus") || userVal.includes("alex")) {
       targetRole = "Sales / Marketing Head";
-    } else if (userVal.includes("supervisor") || userVal.includes("david") || userVal.includes("ramesh") || userVal.includes("ahmed")) {
+    } else if (userVal.includes("supervisor") || userVal.includes("zanhar") || userVal.includes("mehul") || userVal.includes("affan") || userVal.includes("benjamin")) {
       targetRole = "Sales Supervisor";
-    } else if (userVal.includes("dealer") || userVal.includes("naboodah") || userVal.includes("fine tools")) {
+    } else if (userVal.includes("dealer") || userVal.includes("leminar") || userVal.includes("qcon") || userVal.includes("speedex") || userVal.includes("alqama") || userVal.includes("fine tools")) {
       targetRole = "Dealer User";
     }
 
@@ -595,8 +596,89 @@ class AppController {
       }).join("");
     }
 
+    // Sales Supervisor Performance Table in Dashboard
+    const supTableTbody = document.querySelector("#view-dashboard #sup-performance-details-table tbody");
+    const supTableTfoot = document.querySelector("#view-dashboard #sup-performance-details-table tfoot");
+    if (supTableTbody) {
+      const supData = this.getSupervisorPerformanceData();
+      supTableTbody.innerHTML = supData.map((r, idx) => `
+        <tr>
+          <td>${idx + 1}</td>
+          <td><strong>${r.name}</strong></td>
+          <td>${r.dealersCount}</td>
+          <td>${r.branchesCount}</td>
+          <td><strong>${window.store.formatMoney(r.sales)}</strong></td>
+          <td>${window.store.formatMoney(r.target)}</td>
+          <td><span class="achieve-pill ${r.statusClass === 'risk' ? 'red' : (r.statusClass === 'attention' ? 'orange' : 'green')}">${r.ach}</span></td>
+          <td><span class="status-pill ${r.statusClass === 'risk' ? 'red' : (r.statusClass === 'attention' ? 'orange' : 'green')}">${r.status}</span></td>
+        </tr>
+      `).join("");
+
+      if (supTableTfoot) {
+        const totalD = supData.reduce((s, r) => s + r.dealersCount, 0);
+        const totalB = supData.reduce((s, r) => s + r.branchesCount, 0);
+        const totalS = supData.reduce((s, r) => s + r.sales, 0);
+        const totalT = supData.reduce((s, r) => s + r.target, 0);
+        const totalAch = totalT > 0 ? Math.round((totalS / totalT) * 100) + "%" : "0%";
+        supTableTfoot.innerHTML = `
+          <tr class="table-total-row">
+            <td colspan="2"><strong>Total</strong></td>
+            <td><strong>${totalD}</strong></td>
+            <td><strong>${totalB}</strong></td>
+            <td><strong>${window.store.formatMoney(totalS)}</strong></td>
+            <td><strong>${window.store.formatMoney(totalT)}</strong></td>
+            <td><span class="achieve-pill green">${totalAch}</span></td>
+            <td>-</td>
+          </tr>
+        `;
+      }
+    }
+
     // Charts Rendering
     this.renderDashboardCharts();
+  }
+
+  getSupervisorPerformanceData() {
+    const sups = window.store.supervisors;
+    return sups.map(sup => {
+      const dealers = window.store.dealers.filter(d => d.supervisorId === sup.id);
+      const branchesCount = dealers.reduce((sum, d) => sum + (d.branches ? d.branches.length : 0), 0);
+      const dealerIds = dealers.map(d => d.id);
+      const totalSales = window.store.sales
+        .filter(s => dealerIds.includes(s.dealerId))
+        .reduce((sum, s) => sum + Number(s.salesAmount || 0), 0);
+      const target = dealers.reduce((sum, d) => sum + Number(d.salesTarget || 0), 0);
+      const pct = target > 0 ? Math.round((totalSales / target) * 100) : 0;
+      
+      let status = "On Track";
+      let statusClass = "ontrack";
+      if (pct >= 100) {
+        status = "Achieved (100%+)";
+        statusClass = "ontrack";
+      } else if (pct >= 80) {
+        status = "On Track (80-99%)";
+        statusClass = "ontrack";
+      } else if (pct >= 60) {
+        status = "Needs Attention";
+        statusClass = "attention";
+      } else {
+        status = "At Risk (<60%)";
+        statusClass = "risk";
+      }
+
+      return {
+        id: sup.id,
+        name: sup.name,
+        dealersCount: dealers.length,
+        branchesCount: branchesCount,
+        sales: totalSales,
+        target: target,
+        ach: pct + "%",
+        pct: pct,
+        status: status,
+        statusClass: statusClass
+      };
+    });
   }
 
   renderDashboardCharts() {
@@ -605,14 +687,7 @@ class AppController {
     if (ctxSupervisorSales) {
       if (this.charts.dashSupervisorSales) this.charts.dashSupervisorSales.destroy();
 
-      const supervisors = [
-        { code: "RK", name: "Ramesh Kumar", sales: 75200, target: 90000 },
-        { code: "SA", name: "Sara Ahmed", sales: 48600, target: 60000 },
-        { code: "MA", name: "Mohammed Ali", sales: 39800, target: 50000 },
-        { code: "AS", name: "Anita Sharma", sales: 57300, target: 70000 },
-        { code: "DL", name: "David Lee", sales: 24900, target: 50000 }
-      ];
-
+      const supervisors = this.getSupervisorPerformanceData();
       const labels = supervisors.map(s => s.name);
       const salesData = supervisors.map(s => s.sales);
       const targetData = supervisors.map(s => s.target);
@@ -628,7 +703,7 @@ class AppController {
             meta.data.forEach((bar, index) => {
               const val = dataset.data[index];
               if (val != null) {
-                const formattedVal = Number(val).toLocaleString();
+                const formattedVal = Number(Math.round(val)).toLocaleString();
                 ctx.fillStyle = '#1E293B';
                 ctx.font = 'bold 9.5px Inter, sans-serif';
                 ctx.textAlign = 'center';
@@ -678,9 +753,7 @@ class AppController {
           scales: {
             y: {
               beginAtZero: true,
-              max: 100000,
               ticks: {
-                stepSize: 20000,
                 callback: (val) => Number(val).toLocaleString(),
                 font: { size: 10, family: 'Inter', weight: 600 },
                 color: '#64748B'
@@ -707,12 +780,18 @@ class AppController {
     if (ctxSupervisorDonut) {
       if (this.charts.dashSupervisorDonut) this.charts.dashSupervisorDonut.destroy();
 
+      const supervisors = this.getSupervisorPerformanceData();
+      const high = supervisors.filter(s => s.pct >= 100).length;
+      const mid = supervisors.filter(s => s.pct >= 60 && s.pct < 100).length;
+      const low = supervisors.filter(s => s.pct < 60).length;
+      const total = supervisors.length || 1;
+
       this.charts.dashSupervisorDonut = new Chart(ctxSupervisorDonut, {
         type: 'doughnut',
         data: {
           labels: ['100% and above', '60% - 80%', 'Less than 60%'],
           datasets: [{
-            data: [2, 2, 1],
+            data: [high, mid, low],
             backgroundColor: ['#10B981', '#F59E0B', '#EF4444'],
             borderWidth: 2,
             borderColor: '#FFFFFF'
@@ -726,7 +805,7 @@ class AppController {
             legend: { display: false },
             tooltip: {
               callbacks: {
-                label: (ctx) => `${ctx.label}: ${ctx.raw} (${ctx.raw === 2 ? '40%' : '20%'})`
+                label: (ctx) => `${ctx.label}: ${ctx.raw} (${Math.round((ctx.raw / total) * 100)}%)`
               }
             }
           }
@@ -3188,15 +3267,15 @@ class AppController {
             <div style="width: 170px; display: flex; flex-direction: column; gap: 10px; font-size: 0.8rem;">
               <div style="display: flex; align-items: center; justify-content: space-between;">
                 <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #10B981;"></span> 100% and above</span>
-                <strong>2 <span style="color: #64748B; font-weight: normal;">40%</span></strong>
+                <strong>${(() => { const d = this.getSupervisorPerformanceData(); const c = d.filter(s => s.pct >= 100).length; return `${c} <span style="color: #64748B; font-weight: normal;">${Math.round((c/d.length)*100)}%</span>`; })()}</strong>
               </div>
               <div style="display: flex; align-items: center; justify-content: space-between;">
                 <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #F59E0B;"></span> 60% - 80%</span>
-                <strong>2 <span style="color: #64748B; font-weight: normal;">40%</span></strong>
+                <strong>${(() => { const d = this.getSupervisorPerformanceData(); const c = d.filter(s => s.pct >= 60 && s.pct < 100).length; return `${c} <span style="color: #64748B; font-weight: normal;">${Math.round((c/d.length)*100)}%</span>`; })()}</strong>
               </div>
               <div style="display: flex; align-items: center; justify-content: space-between;">
                 <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #EF4444;"></span> Less than 60%</span>
-                <strong>1 <span style="color: #64748B; font-weight: normal;">20%</span></strong>
+                <strong>${(() => { const d = this.getSupervisorPerformanceData(); const c = d.filter(s => s.pct < 60).length; return `${c} <span style="color: #64748B; font-weight: normal;">${Math.round((c/d.length)*100)}%</span>`; })()}</strong>
               </div>
             </div>
           </div>
@@ -3224,22 +3303,15 @@ class AppController {
             </thead>
             <tbody>
               ${(() => {
-                const sampleRows = [
-                  { name: "Ramesh Kumar", dealers: 6, branches: 14, sales: 75200, target: 90000, ach: "84%", status: "On Track", statusClass: "ontrack" },
-                  { name: "Sara Ahmed", dealers: 4, branches: 8, sales: 48600, target: 60000, ach: "81%", status: "On Track", statusClass: "ontrack" },
-                  { name: "Mohammed Ali", dealers: 3, branches: 7, sales: 39800, target: 50000, ach: "80%", status: "Needs Attention", statusClass: "attention" },
-                  { name: "Anita Sharma", dealers: 4, branches: 9, sales: 57300, target: 70000, ach: "82%", status: "On Track", statusClass: "ontrack" },
-                  { name: "David Lee", dealers: 1, branches: 4, sales: 24900, target: 50000, ach: "50%", status: "At Risk", statusClass: "risk" }
-                ];
-
-                return sampleRows.map((r, idx) => `
+                const supRows = this.getSupervisorPerformanceData();
+                return supRows.map((r, idx) => `
                   <tr>
                     <td>${idx + 1}</td>
                     <td><strong style="font-size: 0.9rem;">${r.name}</strong></td>
-                    <td>${r.dealers}</td>
-                    <td>${r.branches}</td>
-                    <td><strong>${r.sales.toLocaleString()}</strong></td>
-                    <td>${r.target.toLocaleString()}</td>
+                    <td>${r.dealersCount}</td>
+                    <td>${r.branchesCount}</td>
+                    <td><strong>${window.store.formatMoney(r.sales)}</strong></td>
+                    <td>${window.store.formatMoney(r.target)}</td>
                     <td><span class="badge ${r.statusClass === 'risk' ? 'badge-danger' : (r.statusClass === 'attention' ? 'badge-warning' : 'badge-success')}">${r.ach}</span></td>
                     <td><span class="status-pill ${r.statusClass}">${r.status}</span></td>
                   </tr>
@@ -3247,15 +3319,25 @@ class AppController {
               })()}
             </tbody>
             <tfoot style="background: #F8FAFC; font-weight: 700;">
-              <tr>
-                <td colspan="2"><strong>Total</strong></td>
-                <td><strong>18</strong></td>
-                <td><strong>42</strong></td>
-                <td><strong>245,800</strong></td>
-                <td><strong>300,000</strong></td>
-                <td><span class="badge badge-success">82%</span></td>
-                <td>-</td>
-              </tr>
+              ${(() => {
+                const supRows = this.getSupervisorPerformanceData();
+                const totalD = supRows.reduce((s, r) => s + r.dealersCount, 0);
+                const totalB = supRows.reduce((s, r) => s + r.branchesCount, 0);
+                const totalS = supRows.reduce((s, r) => s + r.sales, 0);
+                const totalT = supRows.reduce((s, r) => s + r.target, 0);
+                const totalAch = totalT > 0 ? Math.round((totalS / totalT) * 100) + "%" : "0%";
+                return `
+                  <tr>
+                    <td colspan="2"><strong>Total</strong></td>
+                    <td><strong>${totalD}</strong></td>
+                    <td><strong>${totalB}</strong></td>
+                    <td><strong>${window.store.formatMoney(totalS)}</strong></td>
+                    <td><strong>${window.store.formatMoney(totalT)}</strong></td>
+                    <td><span class="badge badge-success">${totalAch}</span></td>
+                    <td>-</td>
+                  </tr>
+                `;
+              })()}
             </tfoot>
           </table>
         </div>
@@ -3271,21 +3353,26 @@ class AppController {
     if (ctxBar) {
       if (this.charts.supReportBar) this.charts.supReportBar.destroy();
 
+      const supervisors = this.getSupervisorPerformanceData();
+      const labels = supervisors.map(s => s.name);
+      const salesData = supervisors.map(s => s.sales);
+      const targetData = supervisors.map(s => s.target);
+
       this.charts.supReportBar = new Chart(ctxBar, {
         type: 'bar',
         data: {
-          labels: ['Ramesh Kumar', 'Sara Ahmed', 'Mohammed Ali', 'Anita Sharma', 'David Lee'],
+          labels: labels,
           datasets: [
             {
               label: 'Sales Amount',
-              data: [75200, 48600, 39800, 57300, 24900],
+              data: salesData,
               backgroundColor: '#E30613',
               borderRadius: 6,
               barPercentage: 0.6
             },
             {
               label: 'Sales Target',
-              data: [90000, 60000, 50000, 70000, 50000],
+              data: targetData,
               backgroundColor: '#C7D2FE',
               borderRadius: 6,
               barPercentage: 0.6
@@ -3299,14 +3386,14 @@ class AppController {
             legend: { position: 'top', align: 'end', labels: { boxWidth: 10, font: { family: 'Inter', size: 12 } } },
             tooltip: {
               callbacks: {
-                label: (ctx) => `${ctx.dataset.label}: ${window.store.currency} ${ctx.raw.toLocaleString()}`
+                label: (ctx) => `${ctx.dataset.label}: ${window.store.currency} ${Number(ctx.raw).toLocaleString()}`
               }
             }
           },
           scales: {
             y: {
               beginAtZero: true,
-              ticks: { callback: (v) => `${v.toLocaleString()}` },
+              ticks: { callback: (v) => `${Number(v).toLocaleString()}` },
               grid: { color: '#F1F5F9' }
             },
             x: { grid: { display: false } }
@@ -3320,12 +3407,17 @@ class AppController {
     if (ctxDonut) {
       if (this.charts.supReportDonut) this.charts.supReportDonut.destroy();
 
+      const supervisors = this.getSupervisorPerformanceData();
+      const high = supervisors.filter(s => s.pct >= 100).length;
+      const mid = supervisors.filter(s => s.pct >= 60 && s.pct < 100).length;
+      const low = supervisors.filter(s => s.pct < 60).length;
+
       this.charts.supReportDonut = new Chart(ctxDonut, {
         type: 'doughnut',
         data: {
           labels: ['100% and above', '60% - 80%', 'Less than 60%'],
           datasets: [{
-            data: [2, 2, 1],
+            data: [high, mid, low],
             backgroundColor: ['#10B981', '#F59E0B', '#EF4444'],
             borderWidth: 3,
             borderColor: '#FFFFFF'

@@ -24,7 +24,7 @@
   <script>
     (function() {
       try {
-        var s = localStorage.getItem("fischer_promo_mgmt_v1");
+        var s = localStorage.getItem("fischer_promo_mgmt_v2");
         if (s) {
           var parsed = JSON.parse(s);
           if (parsed.isLoggedIn !== false) {
@@ -264,7 +264,7 @@
               <i class="fa-solid fa-user-gear" style="color: #D97706;"></i> Sales Supervisor
             </button>
             <button type="button" class="dropdown-role-option" onclick="app.switchRoleFromDropdown('Dealer User')">
-              <i class="fa-solid fa-store" style="color: #16A34A;"></i> Dealer User (Fine Tools)
+              <i class="fa-solid fa-store" style="color: #16A34A;"></i> Dealer User (Leminar Gulf)
             </button>
             <div class="dropdown-divider"></div>
             <button type="button" class="dropdown-action-item" onclick="app.resetDemoData()">
@@ -396,7 +396,13 @@
               <div class="filter-pill-item">
                 <span class="filter-pill-label">Month <span class="req">*</span></span>
                 <select class="filter-pill-control" id="rep-filter-month">
-                  <option value="2024-03">Mar 2024</option>
+                  <option value="ALL">📅 All Months (Jan - Sep 2024)</option>
+                  <option value="2024-08">Aug 2024</option>
+                  <option value="2024-07">Jul 2024</option>
+                  <option value="2024-06">Jun 2024</option>
+                  <option value="2024-05">May 2024</option>
+                  <option value="2024-04">Apr 2024</option>
+                  <option value="2024-03" selected>Mar 2024</option>
                   <option value="2024-02">Feb 2024</option>
                   <option value="2024-01">Jan 2024</option>
                 </select>
@@ -405,30 +411,53 @@
                 <span class="filter-pill-label">Sales Supervisor</span>
                 <select class="filter-pill-control" id="rep-filter-sup">
                   <option value="ALL">👤 All Supervisors</option>
-                  <option value="sup_1">Ramesh Kumar</option>
-                  <option value="sup_2">Sara Ahmed</option>
-                  <option value="sup_3">Mohammed Ali</option>
-                  <option value="sup_4">Anita Sharma</option>
-                  <option value="sup_5">David Lee</option>
+                  <option value="sup_1">Zanhar (Dubai & Northern)</option>
+                  <option value="sup_2">Mehul (Abu Dhabi & Dubai)</option>
+                  <option value="sup_3">Affan (Sharjah & Ajman)</option>
+                  <option value="sup_4">Benjamin (Western Region)</option>
                 </select>
               </div>
               <div class="filter-pill-item">
                 <span class="filter-pill-label">Dealer</span>
                 <select class="filter-pill-control" id="rep-filter-dealer">
                   <option value="ALL">👤 All Dealers</option>
-                  <option value="dlr_1">Fine Tools Trading</option>
-                  <option value="dlr_2">BuildRight Hardware</option>
-                  <option value="dlr_3">Pro Hardware Supplies</option>
-                  <option value="dlr_4">Modern Build Materials</option>
+                  <option value="deal_1">Leminar Gulf</option>
+                  <option value="deal_2">Mohd Al Qama</option>
+                  <option value="deal_3">Fujairah General Trading</option>
+                  <option value="deal_4">Fasteners King</option>
+                  <option value="deal_5">Al Rawae Building Materials</option>
+                  <option value="deal_6">Reza Trading LLC</option>
+                  <option value="deal_7">Al Madina Hardware Trading</option>
+                  <option value="deal_8">QCON General Trading LLC</option>
+                  <option value="deal_9">FGT LLC</option>
+                  <option value="deal_10">Imperial General Trading</option>
+                  <option value="deal_11">Adnan Haji Hardware Trading</option>
+                  <option value="deal_12">Media General Trading LLC</option>
+                  <option value="deal_13">Speedex International LLC</option>
+                  <option value="deal_14">Fakri Tools</option>
+                  <option value="deal_15">Haris Trading LLC</option>
+                  <option value="deal_16">Apex Engineering Supplies</option>
                 </select>
               </div>
               <div class="filter-pill-item">
                 <span class="filter-pill-label">Branch</span>
                 <select class="filter-pill-control" id="rep-filter-branch">
                   <option value="ALL">🏛️ All Branches</option>
-                  <option value="br_1">Deira Main Branch</option>
-                  <option value="br_2">Al Quoz Store</option>
-                  <option value="br_3">Sharjah Industrial</option>
+                  <option value="br_101">Um Ramool (Dubai)</option>
+                  <option value="br_201">Al Quoz 3 (Dubai)</option>
+                  <option value="br_202">Al Quoz 4 (Dubai)</option>
+                  <option value="br_203">DIP 1 (Dubai)</option>
+                  <option value="br_204">Ras Al Khor (Dubai)</option>
+                  <option value="br_205">Jebel Ali Freezone (Dubai)</option>
+                  <option value="br_301">Fujairah Branch (Fujairah)</option>
+                  <option value="br_302">Al Quoz Store (Dubai)</option>
+                  <option value="br_304">Sharjah Branch (Sharjah)</option>
+                  <option value="br_501">Al Qusais (Dubai)</option>
+                  <option value="br_804">Abu Dhabi (Abu Dhabi)</option>
+                  <option value="br_902">Mussafah (Abu Dhabi)</option>
+                  <option value="br_1101">Sharjah Industrial (Sharjah)</option>
+                  <option value="br_1301">Al Quoz - SZR (Dubai)</option>
+                  <option value="br_1401">Ajman Industrial (Ajman)</option>
                 </select>
               </div>
               <div class="filter-pill-item">
@@ -436,9 +465,12 @@
                 <select class="filter-pill-control" id="rep-filter-loc">
                   <option value="ALL">📍 All Locations</option>
                   <option value="Dubai">Dubai</option>
-                  <option value="Sharjah">Sharjah</option>
                   <option value="Abu Dhabi">Abu Dhabi</option>
+                  <option value="Sharjah">Sharjah</option>
                   <option value="Ajman">Ajman</option>
+                  <option value="Fujairah">Fujairah</option>
+                  <option value="Ras Al Khaimah">Ras Al Khaimah</option>
+                  <option value="Umm Al Quwain">Umm Al Quwain</option>
                 </select>
               </div>
               <button class="btn-filter-view" onclick="app.showToast('Report refreshed for selected filters', 'success')">
@@ -635,63 +667,53 @@
                   <tbody>
                     <tr>
                       <td>1</td>
-                      <td><strong>Ramesh Kumar</strong></td>
+                      <td><strong>Zanhar</strong></td>
                       <td>6</td>
-                      <td>14</td>
-                      <td>75,200</td>
-                      <td>90,000</td>
-                      <td><span class="achieve-pill green">84%</span></td>
+                      <td>16</td>
+                      <td>1,875,196.79</td>
+                      <td>2,060,000</td>
+                      <td><span class="achieve-pill green">91%</span></td>
                       <td><span class="status-pill green">On Track</span></td>
                     </tr>
                     <tr>
                       <td>2</td>
-                      <td><strong>Sara Ahmed</strong></td>
+                      <td><strong>Mehul</strong></td>
                       <td>4</td>
-                      <td>8</td>
-                      <td>48,600</td>
-                      <td>60,000</td>
-                      <td><span class="achieve-pill green">81%</span></td>
-                      <td><span class="status-pill green">On Track</span></td>
+                      <td>11</td>
+                      <td>16,590.00</td>
+                      <td>85,000</td>
+                      <td><span class="achieve-pill red">20%</span></td>
+                      <td><span class="status-pill red">At Risk (&lt;60%)</span></td>
                     </tr>
                     <tr>
                       <td>3</td>
-                      <td><strong>Mohammed Ali</strong></td>
-                      <td>3</td>
-                      <td>7</td>
-                      <td>39,800</td>
-                      <td>50,000</td>
-                      <td><span class="achieve-pill orange">80%</span></td>
-                      <td><span class="status-pill orange">Needs Attention</span></td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td><strong>Anita Sharma</strong></td>
-                      <td>4</td>
-                      <td>9</td>
-                      <td>57,300</td>
-                      <td>70,000</td>
-                      <td><span class="achieve-pill green">82%</span></td>
-                      <td><span class="status-pill green">On Track</span></td>
-                    </tr>
-                    <tr>
+                      <td><strong>Affan</strong></td>
                       <td>5</td>
-                      <td><strong>David Lee</strong></td>
-                      <td>1</td>
+                      <td>17</td>
+                      <td>27,200.00</td>
+                      <td>148,000</td>
+                      <td><span class="achieve-pill red">18%</span></td>
+                      <td><span class="status-pill red">At Risk (&lt;60%)</span></td>
+                    </tr>
+                    <tr>
                       <td>4</td>
-                      <td>24,900</td>
-                      <td>50,000</td>
-                      <td><span class="achieve-pill red">50%</span></td>
-                      <td><span class="status-pill red">At Risk</span></td>
+                      <td><strong>Benjamin</strong></td>
+                      <td>1</td>
+                      <td>2</td>
+                      <td>56,500.00</td>
+                      <td>60,000</td>
+                      <td><span class="achieve-pill green">94%</span></td>
+                      <td><span class="status-pill green">On Track</span></td>
                     </tr>
                   </tbody>
                   <tfoot>
                     <tr class="table-total-row">
                       <td colspan="2"><strong>Total</strong></td>
-                      <td><strong>18</strong></td>
-                      <td><strong>42</strong></td>
-                      <td><strong>245,800</strong></td>
-                      <td><strong>300,000</strong></td>
-                      <td><span class="achieve-pill green">82%</span></td>
+                      <td><strong>16</strong></td>
+                      <td><strong>46</strong></td>
+                      <td><strong>1,975,486.79</strong></td>
+                      <td><strong>2,353,000</strong></td>
+                      <td><span class="achieve-pill green">84%</span></td>
                       <td>-</td>
                     </tr>
                   </tfoot>
