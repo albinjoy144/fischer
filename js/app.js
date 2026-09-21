@@ -3761,7 +3761,7 @@ class AppController {
             <span class="badge badge-info"><i class="fa-solid fa-circle-check"></i> ${caption && caption.toLowerCase().includes('proof') ? 'Activity Proof' : 'Sample Activity Photo'}</span>
           </div>
           <div class="image-lightbox-actions">
-            <a href="${imageUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" title="Open full resolution in new tab">
+            <a href="${imageUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" title="Open full resolution in new tab">
               <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Full
             </a>
             <button type="button" class="btn btn-secondary btn-sm modal-close-trigger" onclick="app.closeAllModals()">
