@@ -2091,7 +2091,7 @@ class AppController {
 
       <!-- 4. Table Card -->
       <div class="card">
-        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="card-header">
           <h3 class="card-title"><i class="fa-solid fa-list"></i> Recorded Events</h3>
           <button class="btn btn-sm btn-primary" id="btn-add-event" onclick="app.openAddEventModal()"><i class="fa-solid fa-calendar-plus"></i> Add Event</button>
         </div>
@@ -2577,7 +2577,7 @@ class AppController {
 
       <!-- Sales Records Table -->
       <div class="card">
-        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <div class="card-header">
           <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> Recorded Sales Logs</h3>
           <button class="btn btn-sm btn-primary" id="btn-add-sales" onclick="app.openAddSalesModal()"><i class="fa-solid fa-receipt"></i> Add Sales Record</button>
         </div>
